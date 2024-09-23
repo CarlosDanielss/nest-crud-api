@@ -50,12 +50,12 @@ export class CreateUserController {
   async handle(@Body() body: CreateUserRequest) {
     const { name, email, password } = body;
 
-    const result = await this.createUserService.execute({
+    await this.createUserService.execute({
       name,
       email,
       password,
     });
 
-    return result;
+    return { message: 'O usuário foi criado com sucesso!' };
   }
 }
