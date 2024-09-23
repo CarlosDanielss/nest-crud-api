@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  postgres:
+    container_name: postgresDB
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=crud-nest
+      - PGDATA=/data/postgres
+    volumes:
+      - ./data/pg:/data/postgres
+  
+  app:
+    build: .
+    command: npm start
+    ports:
+      - 3333:3333
+    volumes:
+      - .:/user/app
