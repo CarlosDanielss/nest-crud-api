@@ -36,6 +36,6 @@ export class AuthenticateController {
 
     const accessToken = this.jwt.sign({ sub: result.id }, { expiresIn: '10h' });
 
-    return { token: accessToken };
+    return { token: accessToken, user: result };
   }
 }
